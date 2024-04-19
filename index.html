@@ -17,87 +17,260 @@
     <link rel="stylesheet" href="stilus.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Termékeink</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="kosar.html">Kosár</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="adatok.html">Személyes adatok</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin.html">Admin</a>
-          </li>
-        </ul>
+    <main>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Termékeink</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kosar.html">Kosár</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="adatok.html">Személyes adatok</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid row p-3 border border-bottom-dark mx-0">
+        <div class="col-lg-3 py-2">
+          <select class="form-select">
+            <option>Rendezési szempontok</option>
+            <option>Ár szerint növekvő</option>
+            <option>Ár szerint csökkenő</option>
+          </select>
+        </div>
+        <div class="col-lg-3 py-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Szűrési lehetőségek"
+          />
+        </div>
       </div>
-    </nav>
-    <div class="container-fluid row p-3">
-      <div class="col-3">
-        <select class="form-select">
-          <option>Rendezési szempontok</option>
-          <option>Ár szerint növekvő</option>
-          <option>Ár szerint csökkenő</option>
-        </select>
-      </div>
-      <div class="col-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Szűrési lehetőségek"
-        />
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div>
-          <div class="card col-3" style="width: 400px; padding: 0">
-            <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
-            <div class="card-body">
-              <h4 class="card-title">BMW 4</h4>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Teljesítmény - 140 kW (190 LE)</li>
-                <li class="list-group-item">Hajtástípus - xDrive</li>
-                <li class="list-group-item">
-                  CO2-kibocsátás (kombinált) - 138 g/km [1]
-                </li>
-                <li class="list-group-item">
-                  Fogyasztás (kombinált) - 5,3 l/100km
-                </li>
-                <li class="list-group-item">Gyorsulás - 7,4s (0-100 km/h)</li>
-                <li class="list-group-item">Sebességváltó - Automat</li>
-                <li class="list-group-item">Üzemanyagtípus - Dízel</li>
-              </ul>
-              <button class="btn btn-secondary">Kosárba</button>
+      <div class="container-fluid bg-light">
+        <div class="row pt-5" id="termek-tarolo">
+          <div class="col-lg-6 d-flex justify-content-center p-3">
+            <div class="card col-3" style="width: 400px; height: fit-content">
+              <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
+              <div class="card-body">
+                <h4 class="card-title">BMW 4</h4>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header">
+                      <a
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        href="#collapseX"
+                      >
+                        Tulajdonságok
+                      </a>
+                    </div>
+                    <div
+                      id="collapseX"
+                      class="collapse show"
+                      data-bs-parent="#accordion"
+                    >
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Teljesítmény - 140 kW (190 LE)
+                          </li>
+                          <li class="list-group-item">Hajtástípus - xDrive</li>
+                          <li class="list-group-item">
+                            CO2-kibocsátás (kombinált) - 138 g/km [1]
+                          </li>
+                          <li class="list-group-item">
+                            Fogyasztás (kombinált) - 5,3 l/100km
+                          </li>
+                          <li class="list-group-item">
+                            Gyorsulás - 7,4s (0-100 km/h)
+                          </li>
+                          <li class="list-group-item">
+                            Sebességváltó - Automat
+                          </li>
+                          <li class="list-group-item">
+                            Üzemanyagtípus - Dízel
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-3 pt-3">
+                  <button class="btn btn-secondary">Kosárba</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex justify-content-center p-3">
+            <div class="card col-3" style="width: 400px; height: fit-content">
+              <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
+              <div class="card-body">
+                <h4 class="card-title">BMW 4</h4>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header">
+                      <a
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        href="#collapseXD"
+                      >
+                        Tulajdonságok
+                      </a>
+                    </div>
+                    <div
+                      id="collapseXD"
+                      class="collapse show"
+                      data-bs-parent="#accordion"
+                    >
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Teljesítmény - 140 kW (190 LE)
+                          </li>
+                          <li class="list-group-item">Hajtástípus - xDrive</li>
+                          <li class="list-group-item">
+                            CO2-kibocsátás (kombinált) - 138 g/km [1]
+                          </li>
+                          <li class="list-group-item">
+                            Fogyasztás (kombinált) - 5,3 l/100km
+                          </li>
+                          <li class="list-group-item">
+                            Gyorsulás - 7,4s (0-100 km/h)
+                          </li>
+                          <li class="list-group-item">
+                            Sebességváltó - Automat
+                          </li>
+                          <li class="list-group-item">
+                            Üzemanyagtípus - Dízel
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-3 pt-3">
+                  <button class="btn btn-secondary">Kosárba</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex justify-content-center p-3">
+            <div class="card col-3" style="width: 400px; height: fit-content">
+              <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
+              <div class="card-body">
+                <h4 class="card-title">BMW 4</h4>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header">
+                      <a
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        href="#collapseTwo"
+                      >
+                        Tulajdonságok
+                      </a>
+                    </div>
+                    <div
+                      id="collapseTwo"
+                      class="collapse show"
+                      data-bs-parent="#accordion"
+                    >
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Teljesítmény - 140 kW (190 LE)
+                          </li>
+                          <li class="list-group-item">Hajtástípus - xDrive</li>
+                          <li class="list-group-item">
+                            CO2-kibocsátás (kombinált) - 138 g/km [1]
+                          </li>
+                          <li class="list-group-item">
+                            Fogyasztás (kombinált) - 5,3 l/100km
+                          </li>
+                          <li class="list-group-item">
+                            Gyorsulás - 7,4s (0-100 km/h)
+                          </li>
+                          <li class="list-group-item">
+                            Sebességváltó - Automat
+                          </li>
+                          <li class="list-group-item">
+                            Üzemanyagtípus - Dízel
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-3 pt-3">
+                  <button class="btn btn-secondary">Kosárba</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex justify-content-center p-3">
+            <div class="card col-3" style="width: 400px; height: fit-content">
+              <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
+              <div class="card-body">
+                <h4 class="card-title">BMW 4</h4>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header">
+                      <a
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        href="#collapseOne"
+                      >
+                        Tulajdonságok
+                      </a>
+                    </div>
+                    <div
+                      id="collapseOne"
+                      class="collapse show"
+                      data-bs-parent="#accordion"
+                    >
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Teljesítmény - 140 kW (190 LE)
+                          </li>
+                          <li class="list-group-item">Hajtástípus - xDrive</li>
+                          <li class="list-group-item">
+                            CO2-kibocsátás (kombinált) - 138 g/km [1]
+                          </li>
+                          <li class="list-group-item">
+                            Fogyasztás (kombinált) - 5,3 l/100km
+                          </li>
+                          <li class="list-group-item">
+                            Gyorsulás - 7,4s (0-100 km/h)
+                          </li>
+                          <li class="list-group-item">
+                            Sebességváltó - Automat
+                          </li>
+                          <li class="list-group-item">
+                            Üzemanyagtípus - Dízel
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-3 pt-3">
+                  <button class="btn btn-secondary">Kosárba</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="card col-3" style="width: 400px; padding: 0">
-          <img class="card-img-top" src="./kepek/BMW_4.jpg" alt="BMW 4" />
-          <div class="card-body">
-            <h4 class="card-title">BMW 4</h4>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Teljesítmény - 140 kW (190 LE)</li>
-              <li class="list-group-item">Hajtástípus - xDrive</li>
-              <li class="list-group-item">
-                CO2-kibocsátás (kombinált) - 138 g/km [1]
-              </li>
-              <li class="list-group-item">
-                Fogyasztás (kombinált) - 5,3 l/100km
-              </li>
-              <li class="list-group-item">Gyorsulás - 7,4s (0-100 km/h)</li>
-              <li class="list-group-item">Sebességváltó - Automat</li>
-              <li class="list-group-item">Üzemanyagtípus - Dízel</li>
-            </ul>
-
-            <button class="btn btn-secondary">Kosárba</button>
-          </div>
-        </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>

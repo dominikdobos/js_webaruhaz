@@ -9,15 +9,15 @@ export function layoutLetrehoz(lista) {
                 <h4 class="card-title">${e.termek}</h4>
                 <div id="accordion">
                   <div class="card">
-                    <div class="card-header">
-                      <a
-                        class="btn"
-                        data-bs-toggle="collapse"
-                        href="#collapse${i}"
-                      >
-                        Tulajdonságok
-                      </a>
-                    </div>
+                    <a
+                      class="btn bg-light border-bottom"
+                      data-bs-toggle="collapse"
+                      href="#collapse${i}"
+                    >
+                      <div class="card-header bg-light border-0 text-start">
+                          Tulajdonságok
+                      </div>
+                    </a>
                     <div
                       id="collapse${i}"
                       class="collapse"
@@ -101,9 +101,9 @@ export function uresKosarOldal() {
   return txt;
 }
 
-export function kosarTetelTxt(lista, ar) {
+export function kosarTetelTxt(lista) {
   let txt = ``;
-  lista.forEach((e) => {
+  lista.forEach((e, i) => {
     txt += `
     <div class="container border-bottom pb-4">
           <h3 class="display-5">
@@ -115,38 +115,39 @@ export function kosarTetelTxt(lista, ar) {
             </div>
             <div class="col-lg-6 col-sm-12 d-flex flex-column">
               <div class="col-10">
-                <div
-                  class="d-flex flex-wrap align-content-center justify-content-center gap-4"
-                >
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Teljesítmény</p>
-                    <p>${e.teljesitmeny}</p>
+                  <div
+                    class=" d-flex flex-wrap align-content-center justify-content-center gap-4"
+                  >
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Teljesítmény</p>
+                      <p>${e.teljesitmeny}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Hajtástípus</p>
+                      <p>${e.hajtastipus}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">CO2 kibocsátás</p>
+                      <p>${e.co2}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Fogyasztás</p>
+                      <p>${e.fogyasztas}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Gyorsulás</p>
+                      <p>${e.gyorsulas}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Sebességváltó</p>
+                      <p>${e.sebessegvalto}</p>
+                    </div>
+                    <div class="d-flex flex-column text-center">
+                      <p class="lead">Üzemanyagtípus</p>
+                      <p>${e.sebessegvalto}</p>
+                    </div>
                   </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Hajtástípus</p>
-                    <p>${e.hajtastipus}</p>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">CO2 kibocsátás</p>
-                    <p>${e.co2}</p>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Fogyasztás</p>
-                    <p>${e.fogyasztas}</p>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Gyorsulás</p>
-                    <p>${e.gyorsulas}</p>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Sebességváltó</p>
-                    <p>${e.sebessegvalto}</p>
-                  </div>
-                  <div class="d-flex flex-column text-center">
-                    <p class="lead">Üzemanyagtípus</p>
-                    <p>${e.sebessegvalto}</p>
-                  </div>
-                </div>
+                
               </div>
               <hr />
               <div class="col">
@@ -159,15 +160,17 @@ export function kosarTetelTxt(lista, ar) {
                     >
                     <input
                       type="number"
-                      class="form-control"
+                      id="${i}"
+                      class="form-control darabSzamlalo"
                       min="1"
                       max="5"
                       value="1"
+                      onkeydown="return false"
                       aria-describedby="inputGroup-sizing-default"
                     />
                   </div>
 
-                  <button type="button" class="btn btn-outline-danger col">
+                  <button type="button" class="btn btn-outline-danger col termekTorolGomb" id="${i}">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="40"
@@ -196,11 +199,7 @@ export function kosarTetelTxt(lista, ar) {
           <div class="d-flex justify-content-between align-items-center">
             <div class="">
               <p class="fs-2 lead align-middle m-0">
-                Fizetendő: ${ar.toLocaleString("hu-HU", {
-                  style: "currency",
-                  currency: "HUF",
-                  minimumFractionDigits: 2,
-                })} 
+                Fizetendő: <span id="arHelye"></span> 
               </p>
             </div>
             <div class="border-start" style="padding-left: 2.5rem">
@@ -212,6 +211,14 @@ export function kosarTetelTxt(lista, ar) {
     `;
   });
   return txt;
+}
+
+export function arMegadas(szam) {
+  return szam.toLocaleString("hu-HU", {
+    style: "currency",
+    currency: "HUF",
+    minimumFractionDigits: 2,
+  });
 }
 
 export function megjelenit(szuloElem, txt) {

@@ -1,5 +1,16 @@
-import { kosarbaRakas, kosarAr, KOSAR } from "./adatKezelo.js";
-import { kosarTetelTxt, megjelenit, uresKosarOldal } from "./fuggvenyek.js";
+import {
+  kosarbaRakas,
+  kosarAr,
+  KOSAR,
+  termekTorles,
+  arSzamitas,
+} from "./adatKezelo.js";
+import {
+  kosarTetelTxt,
+  megjelenit,
+  uresKosarOldal,
+  arMegadas,
+} from "./fuggvenyek.js";
 
 let jelenlegiOldal = 1;
 
@@ -22,14 +33,7 @@ export function oldalValtas() {
   });
   KOSAR_OLDAL.on("click", function () {
     jelenlegiOldal = 2;
-    if (KOSAR.length === 0) {
-      megjelenit("#kosar-tarolo", uresKosarOldal());
-      oldalToggle(jelenlegiOldal);
-    } else {
-      console.log("dxxd");
-      megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR, kosarAr));
-      oldalToggle(jelenlegiOldal);
-    }
+    kosarOldalAllapot();
   });
   ADATOK_OLDAL.on("click", function () {
     jelenlegiOldal = 3;
@@ -37,6 +41,19 @@ export function oldalValtas() {
   ADMIN_OLDAL.on("click", function () {
     jelenlegiOldal = 4;
   });
+}
+
+export function kosarOldalAllapot() {
+  if (KOSAR.length === 0) {
+    megjelenit("#kosar-tarolo", uresKosarOldal());
+    oldalToggle(jelenlegiOldal);
+  } else {
+    megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
+    megjelenit("#arHelye", arMegadas(kosarAr));
+    oldalToggle(jelenlegiOldal);
+    eltavolitKosarbol(KOSAR);
+    darabValtozas();
+  }
 }
 
 function oldalToggle(jelenlegiOldal) {
@@ -66,4 +83,22 @@ function oldalToggle(jelenlegiOldal) {
     ADAT_MEGJELENITO.addClass("elrejt");
     ADMIN_MEGJELENITO.removeClass("elrejt");
   }
+}
+
+export function eltavolitKosarbol(lista) {
+  const TOROL_GOMB = $(".termekTorolGomb");
+  TOROL_GOMB.on("click", function (e) {
+    const UJ_KOSAR = termekTorles(lista, e.target.id);
+    kosarOldalAllapot();
+  });
+}
+
+export function darabValtozas() {
+  const DB_SZAMLALO = $(".darabSzamlalo");
+  let uj_ar = 0;
+  DB_SZAMLALO.on("change", function () {
+    uj_ar = arSzamitas(KOSAR);
+    kosarAr = uj_ar;
+    megjelenit("#arHelye", arMegadas(kosarAr));
+  });
 }

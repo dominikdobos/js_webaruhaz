@@ -1,5 +1,9 @@
 import { layoutLetrehoz, megjelenit, uresKosarOldal } from "./fuggvenyek.js";
-import { kosarbaEsemeny, oldalValtas } from "./esemenyKezelo.js";
+import {
+  kosarbaEsemeny,
+  oldalValtas,
+  eltavolitKosarbol,
+} from "./esemenyKezelo.js";
 import { KOSAR } from "./adatKezelo.js";
 import { AUTOK } from "./adatok.js";
 

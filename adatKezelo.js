@@ -9,7 +9,16 @@ export function kosarbaRakas(lista, index) {
   return KOSAR;
 }
 
-export function kosarTorles(lista, index) {
-  lista.splice(lista, index);
+export function termekTorles(lista, index) {
+  lista.splice(index, 1);
   return lista;
+}
+
+export function arSzamitas(lista) {
+  const DB_SZAMLALO = $(".darabSzamlalo");
+  let ar = 0;
+  for (let index = 0; index < lista.length; index++) {
+    ar += lista[index].ar * DB_SZAMLALO.eq(index).val();
+  }
+  return ar;
 }

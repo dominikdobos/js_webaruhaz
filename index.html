@@ -17,45 +17,135 @@
     <script type="module" src="main.js"></script>
     <link rel="stylesheet" href="stilus.css" />
   </head>
-  <body>
+  <body class="container-fluid p-0 m-0 w-100 bg-light">
     <main>
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">Termékeink</a>
+      <div class="container-fluid border-bottom bg-light">
+        <header
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3"
+        >
+          <div class="mb-2 mb-md-0">
+            <a
+              href="#"
+              class="d-inline-flex link-body-emphasis text-decoration-none termekOldal"
+            >
+              <img
+                src="./kepek/bmw-logo.png"
+                width="70px"
+                alt="logo"
+                class="mx-auto"
+              />
+            </a>
+          </div>
+
+          <ul class="nav mb-2 justify-content-center mb-md-0">
+            <li style="font-size: 170%" class="px-3">
+              <a href="#" class="nav-link px-2 link-secondary termekOldal"
+                >Termékek</a
+              >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="kosar.html">Kosár</a>
+            <li style="font-size: 170%" class="px-3">
+              <a
+                href="#"
+                class="nav-link px-2 link-secondary kosarOldal"
+                id="kO"
+                >Kosár</a
+              >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="adatok.html">Személyes adatok</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin.html">Admin</a>
+            <li style="font-size: 170%" class="px-3">
+              <a
+                href="#"
+                class="nav-link px-2 link-secondary text-center adatokOldal"
+                >Személyes adatok</a
+              >
             </li>
           </ul>
+
+          <div class="text-end">
+            <a href="#" class="nav-link px-4 link-secondary adminOldal"
+              >Admin</a
+            >
+          </div>
+        </header>
+      </div>
+
+      <div class="termek-valtozo">
+        <div class="container-fluid row p-3 border-bottom mx-0 bg-white">
+          <div class="col-lg-3 py-2">
+            <select class="form-select">
+              <option>Rendezési szempontok</option>
+              <option>Ár szerint növekvő</option>
+              <option>Ár szerint csökkenő</option>
+            </select>
+          </div>
+          <div class="col-lg-3 py-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Szűrési lehetőségek"
+            />
+          </div>
         </div>
-      </nav>
-      <div class="container-fluid row p-3 border border-bottom-dark mx-0">
-        <div class="col-lg-3 py-2">
-          <select class="form-select">
-            <option>Rendezési szempontok</option>
-            <option>Ár szerint növekvő</option>
-            <option>Ár szerint csökkenő</option>
-          </select>
-        </div>
-        <div class="col-lg-3 py-2">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Szűrési lehetőségek"
-          />
+
+        <div class="container-fluid bg-light">
+          <div class="row pt-5" id="termek-tarolo"></div>
         </div>
       </div>
-      <div class="container-fluid bg-light">
-        <div class="row pt-5" id="termek-tarolo"></div>
+
+      <div class="kosar-valtozo elrejt">
+        <div class="container-fluid py-3 px-5 bg-white border-bottom">
+          <div class="row m-0 d-flex align-items-center">
+            <h3 class="col-6 col-md-4 display-3 px-5">Kosár</h3>
+          </div>
+        </div>
+
+        <div
+          class="container-fluid bg-light d-flex justify-content-center align-items-center flex-column pt-5"
+          id="kosar-tarolo"
+        ></div>
       </div>
+
+      <div class="adatok-valtozo elrejt"></div>
+
+      <div class="admin-valtozo elrejt"></div>
+
+      <footer class="footer mt-auto py-1 bg-body-tertiary">
+        <div class="container">
+          <div
+            class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+          >
+            <p class="col-md-4 mb-0 text-body-secondary">
+              © 2024 Webáruház, Inc
+            </p>
+
+            <a
+              href="/"
+              class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+            >
+              <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link px-2 text-body-secondary"
+                  >Termékek</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="kosar.html" class="nav-link px-2 text-body-secondary"
+                  >Kosár</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="adatok.html" class="nav-link px-2 text-body-secondary"
+                  >Személyes adatok</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </main>
   </body>
 </html>

@@ -101,7 +101,7 @@ export function uresKosarOldal() {
   return txt;
 }
 
-export function kosarTetelTxt(lista) {
+export function kosarTetelTxt(lista, ar) {
   let txt = ``;
   lista.forEach((e, i) => {
     txt += `
@@ -164,7 +164,7 @@ export function kosarTetelTxt(lista) {
                       class="form-control darabSzamlalo"
                       min="1"
                       max="5"
-                      value="1"
+                      value="${e.db}"
                       onkeydown="return false"
                       aria-describedby="inputGroup-sizing-default"
                     />
@@ -199,7 +199,11 @@ export function kosarTetelTxt(lista) {
           <div class="d-flex justify-content-between align-items-center">
             <div class="">
               <p class="fs-2 lead align-middle m-0">
-                Fizetendő: <span id="arHelye"></span> 
+                Fizetendő: <span id="arHelye">${ar.toLocaleString("hu-HU", {
+                  style: "currency",
+                  currency: "HUF",
+                  minimumFractionDigits: 2,
+                })}</span>
               </p>
             </div>
             <div class="border-start" style="padding-left: 2.5rem">
@@ -213,15 +217,23 @@ export function kosarTetelTxt(lista) {
   return txt;
 }
 
-export function arMegadas(szam) {
+export function megjelenit(szuloElem, txt) {
+  const SZULO_ELEM = $(szuloElem);
+  SZULO_ELEM.html(txt);
+}
+
+export function kosarArSzamit(lista) {
+  let ar = 0;
+  for (let index = 0; index < lista.length; index++) {
+    ar += lista[index].ar * lista[index].db;
+  }
+  return ar;
+}
+
+export function arAtvalt(szam) {
   return szam.toLocaleString("hu-HU", {
     style: "currency",
     currency: "HUF",
     minimumFractionDigits: 2,
   });
-}
-
-export function megjelenit(szuloElem, txt) {
-  const SZULO_ELEM = $(szuloElem);
-  SZULO_ELEM.html(txt);
 }

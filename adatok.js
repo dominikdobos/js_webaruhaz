@@ -1,6 +1,7 @@
 export const AUTOK = [
   {
     ar: 22000000,
+    db: 1,
     arMegjelenit: "22 000 000 Ft",
     kosarKep: "./kepek/m4_kosar.jpg",
     termek: "BMW M4",
@@ -15,6 +16,7 @@ export const AUTOK = [
   },
   {
     ar: 25000000,
+    db: 1,
     arMegjelenit: "25 000 000 Ft",
     kosarKep: "./kepek/m5_kosar.jpg",
     termek: "BMW M5 Limousine",
@@ -29,6 +31,7 @@ export const AUTOK = [
   },
   {
     ar: 38000000,
+    db: 1,
     arMegjelenit: "38 000 000 Ft",
     kosarKep: "./kepek/m8_kosar.jpg",
     termek: "BMW M8 Coupé",
@@ -43,6 +46,7 @@ export const AUTOK = [
   },
   {
     ar: 46000000,
+    db: 1,
     arMegjelenit: "46 000 000 Ft",
     kosarKep: "./kepek/x6_kosar.jpg",
     termek: "BMW X6",
@@ -57,6 +61,7 @@ export const AUTOK = [
   },
   {
     ar: 45000000,
+    db: 1,
     arMegjelenit: "45 000 000 Ft",
     kosarKep: "./kepek/x7_kosar.jpg",
     termek: "BMW X7",

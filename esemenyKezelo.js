@@ -1,15 +1,10 @@
-import {
-  kosarbaRakas,
-  kosarAr,
-  KOSAR,
-  termekTorles,
-  arSzamitas,
-} from "./adatKezelo.js";
+import { kosarbaRakas, KOSAR, termekTorles, kosarAr } from "./adatKezelo.js";
 import {
   kosarTetelTxt,
   megjelenit,
   uresKosarOldal,
-  arMegadas,
+  arAtvalt,
+  kosarArSzamit,
 } from "./fuggvenyek.js";
 
 let jelenlegiOldal = 1;
@@ -48,11 +43,10 @@ export function kosarOldalAllapot() {
     megjelenit("#kosar-tarolo", uresKosarOldal());
     oldalToggle(jelenlegiOldal);
   } else {
-    megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
-    megjelenit("#arHelye", arMegadas(kosarAr));
+    megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR, kosarAr));
     oldalToggle(jelenlegiOldal);
     eltavolitKosarbol(KOSAR);
-    darabValtozas();
+    darabSzamitas(KOSAR);
   }
 }
 
@@ -88,17 +82,18 @@ function oldalToggle(jelenlegiOldal) {
 export function eltavolitKosarbol(lista) {
   const TOROL_GOMB = $(".termekTorolGomb");
   TOROL_GOMB.on("click", function (e) {
-    const UJ_KOSAR = termekTorles(lista, e.target.id);
+    termekTorles(lista, e.target.id);
     kosarOldalAllapot();
   });
 }
 
-export function darabValtozas() {
-  const DB_SZAMLALO = $(".darabSzamlalo");
-  let uj_ar = 0;
-  DB_SZAMLALO.on("change", function () {
-    uj_ar = arSzamitas(KOSAR);
-    kosarAr = uj_ar;
-    megjelenit("#arHelye", arMegadas(kosarAr));
+function darabSzamitas(lista) {
+  const DB_ELEM = $(".darabSzamlalo");
+  DB_ELEM.on("change", function (e) {
+    if (DB_ELEM.eq(e.target.id) != 1) {
+      lista[e.target.id].db = DB_ELEM.eq(e.target.id).val();
+      let ujAr = kosarArSzamit(lista);
+      megjelenit("#arHelye", arAtvalt(ujAr));
+    }
   });
 }

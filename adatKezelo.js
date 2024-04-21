@@ -1,24 +1,19 @@
+import { kosarArSzamit } from "./fuggvenyek.js";
+
 export const KOSAR = [];
 export let kosarAr = 0;
 
 export function kosarbaRakas(lista, index) {
   if (KOSAR.indexOf(lista[index]) === -1) {
     KOSAR.push(lista[index]);
-    kosarAr += lista[index].ar;
+    kosarAr = kosarArSzamit(KOSAR);
   }
   return KOSAR;
 }
 
 export function termekTorles(lista, index) {
+  lista[index].db = 1;
   lista.splice(index, 1);
+  kosarAr = kosarArSzamit(lista);
   return lista;
-}
-
-export function arSzamitas(lista) {
-  const DB_SZAMLALO = $(".darabSzamlalo");
-  let ar = 0;
-  for (let index = 0; index < lista.length; index++) {
-    ar += lista[index].ar * DB_SZAMLALO.eq(index).val();
-  }
-  return ar;
 }

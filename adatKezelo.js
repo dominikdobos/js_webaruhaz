@@ -1,5 +1,4 @@
 import { kosarArSzamit } from "./fuggvenyek.js";
-import { init } from "./main.js";
 
 export const KOSAR = [];
 export let kosarAr = 0;
@@ -44,30 +43,4 @@ export function szures(lista, keresoSzoveg) {
     return auto.termek.toUpperCase().includes(keresoSzoveg.toUpperCase());
   });
   return szurtLista;
-}
-
-export function termekHozzaAd(lista) {
-  const SUBMIT_ELEM = $("#submit");
-  SUBMIT_ELEM.on("click", function (evt) {
-    evt.preventDefault();
-
-    const adat = {
-      ar: Number($("#ar").val()),
-      db: 1,
-      kosarKep: $("#kep").val(),
-      termek: $("#tipus").val(),
-      teljesitmeny: $("#teljesitmeny").val(),
-      hajtastipus: $("#hajtastipus").val(),
-      co2: $("#co2").val(),
-      fogyasztas: $("#fogyasztas").val(),
-      gyorsulas: $("#gyorsulas").val(),
-      sebessegvalto: $("#sebessegvalto").val(),
-      uzemanyagtipus: $("#uzemanyag").val(),
-      kep: $("#kep").val(),
-    };
-    if ($(".valid-feedback").eq(0).css("display") === "block") {
-      lista.push(adat);
-      init(lista);
-    }
-  });
 }

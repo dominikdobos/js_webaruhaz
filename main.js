@@ -5,8 +5,8 @@ import {
   rendezEsemeny,
   szuresTipusra,
   torolEsemeny,
+  termekHozzaAd,
 } from "./esemenyKezelo.js";
-import { termekHozzaAd } from "./adatKezelo.js";
 import { AUTOK } from "./adatok.js";
 
 init(AUTOK);

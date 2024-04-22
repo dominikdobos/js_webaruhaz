@@ -43,6 +43,7 @@ export function oldalValtas() {
   });
   ADATOK_OLDAL.on("click", function () {
     jelenlegiOldal = 3;
+    console.log(jelenlegiOldal);
     oldalToggle(jelenlegiOldal);
   });
   ADMIN_OLDAL.on("click", function () {
@@ -68,7 +69,7 @@ export function kosarOldalAllapot() {
 function oldalToggle(jelenlegiOldal) {
   const KOSAR_MEGJELENITO = $(".kosar-valtozo");
   const TERMEK_MEGJELENITO = $(".termek-valtozo");
-  const ADAT_MEGJELENITO = $(".adat-valtozo");
+  const ADAT_MEGJELENITO = $(".adatok-valtozo");
   const ADMIN_MEGJELENITO = $(".admin-valtozo");
 
   if (jelenlegiOldal === 1) {

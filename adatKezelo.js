@@ -6,6 +6,7 @@ export let kosarAr = 0;
 
 export function kosarbaRakas(lista, index) {
   if (KOSAR.indexOf(lista[index]) === -1) {
+    $("#kosarbaHelyez").modal("show");
     KOSAR.push(lista[index]);
     kosarAr = kosarArSzamit(KOSAR);
   }
@@ -51,7 +52,7 @@ export function termekHozzaAd(lista) {
     evt.preventDefault();
 
     const adat = {
-      ar: $("#ar").val(),
+      ar: Number($("#ar").val()),
       db: 1,
       kosarKep: $("#kep").val(),
       termek: $("#tipus").val(),
@@ -64,17 +65,9 @@ export function termekHozzaAd(lista) {
       uzemanyagtipus: $("#uzemanyag").val(),
       kep: $("#kep").val(),
     };
-
-    lista.push(adat);
-    init(lista);
-
-    // console.log($(".valid-feedback").eq(0).css("display"));
-    // if (
-    //   $(".valid-feedback").eq(0).css("display") === "block" &&
-    //   $(".valid-feedback").eq(1).css("display") === "block"
-    // ) {
-    //   lista.push(adat);
-    //   init(lista);
-    // }
+    if ($(".valid-feedback").eq(0).css("display") === "block") {
+      lista.push(adat);
+      init(lista);
+    }
   });
 }

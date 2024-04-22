@@ -53,7 +53,7 @@ export function layoutLetrehoz(lista) {
                 </div>
                 <div class="pt-3">
                   <div class="row m-0">
-                    <button class="btn btn-secondary col-md-4 kosar-gomb" id="${i}" data-bs-toggle="modal" data-bs-target="#kosarbaHelyez">Kosárba</button>
+                    <button class="btn btn-secondary col-md-4 kosar-gomb" id="${i}">Kosárba</button>
                     <div class="modal fade" id="kosarbaHelyez" tabindex="-1" aria-labelledby="kosarbaHelyezLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -226,7 +226,7 @@ export function fizetendoMegjelenit(ar) {
 export function tablazatLetrehoz(lista) {
   let txt = "<div class='table-responsive'><table class='table table-striped'>";
   txt +=
-    "<thead><tr><th>Típus</th><th>Ár</th><th>Teljesítmény</th><th>Hajtástípus</th><th>CO2</th><th>Sebességváltó</th><th>Gyorsulás</th><th>Üzemanyagtípus</th><th></th></tr></thead>";
+    "<thead><tr><th>Típus</th><th>Ár</th><th>Teljesítmény</th><th>Hajtástípus</th><th>CO2</th><th>Fogyasztás</th><th>Gyorsulás</th><th>Sebességváltó</th><th>Üzemanyagtípus</th><th></th></tr></thead>";
   txt += "<tbody>";
   lista.forEach((elem, index) => {
     txt += `<tr>
@@ -235,8 +235,9 @@ export function tablazatLetrehoz(lista) {
             <td>${elem.teljesitmeny}</td>
             <td>${elem.hajtastipus}</td>
             <td>${elem.co2}</td>
-            <td>${elem.sebessegvalto}</td>
+            <td>${elem.fogyasztas}</td>
             <td>${elem.gyorsulas}</td>
+            <td>${elem.sebessegvalto}</td>
             <td>${elem.uzemanyagtipus}</td>
             <td><button id="${index}" class="torol">🗑️</button></td>
             </tr>`;

@@ -5,14 +5,15 @@ import {
   rendezEsemeny,
   szuresTipusra,
   torolEsemeny,
-  termekHozzaAd,
+  termekHozzaad,
+  felhHozzaad,
 } from "./esemenyKezelo.js";
 import { AUTOK } from "./adatok.js";
 
 init(AUTOK);
 oldalValtas();
 szuresTipusra(AUTOK);
-termekHozzaAd(AUTOK);
+termekHozzaad(AUTOK);
 
 export function init(lista) {
   let txt = layoutLetrehoz(lista);

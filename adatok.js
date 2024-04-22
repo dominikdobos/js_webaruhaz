@@ -70,3 +70,5 @@ export const AUTOK = [
     kep: "./kepek/BMW_X7.jpg",
   },
 ];
+
+export const FELHASZNALO = [];

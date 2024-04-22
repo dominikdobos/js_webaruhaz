@@ -1,3 +1,4 @@
+import { FELHASZNALO } from "./adatok.js";
 import {
   kosarbaRakas,
   KOSAR,
@@ -15,6 +16,8 @@ import {
   arAtvalt,
   kosarArSzamit,
   fizetendoMegjelenit,
+  adatokFormOldal,
+  adatokBejelentkezett,
 } from "./fuggvenyek.js";
 import { init } from "./main.js";
 
@@ -43,8 +46,9 @@ export function oldalValtas() {
   });
   ADATOK_OLDAL.on("click", function () {
     jelenlegiOldal = 3;
-    console.log(jelenlegiOldal);
     oldalToggle(jelenlegiOldal);
+    adatokOldalAllpot();
+    felhHozzaad(FELHASZNALO);
   });
   ADMIN_OLDAL.on("click", function () {
     jelenlegiOldal = 4;
@@ -52,17 +56,28 @@ export function oldalValtas() {
   });
 }
 
+export function adatokOldalAllpot() {
+  if (FELHASZNALO.length === 0) {
+    megjelenit(".adatok-valtozo", adatokFormOldal());
+  } else {
+    megjelenit(".adatok-valtozo", adatokBejelentkezett(FELHASZNALO[0]));
+  }
+}
+
 export function kosarOldalAllapot() {
   if (KOSAR.length === 0) {
     megjelenit("#kosar-tarolo", uresKosarOldal());
     megjelenit("#fizetendo-tarolo", "");
     oldalToggle(jelenlegiOldal);
+    oldalValtas();
   } else {
     oldalToggle(jelenlegiOldal);
     megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
     megjelenit("#fizetendo-tarolo", fizetendoMegjelenit(kosarAr));
     darabSzamitas(KOSAR);
     eltavolitKosarbol(KOSAR);
+    rendeles();
+    oldalValtas();
   }
 }
 
@@ -141,13 +156,14 @@ export function torolEsemeny(lista) {
   const TOROL_ELEM = $(".torol");
   TOROL_ELEM.on("click", function (evt) {
     let index = evt.target.id;
+    console.log(index);
     const UJ_LISTA = termekTorles(lista, index);
     init(UJ_LISTA);
   });
 }
 
-export function termekHozzaAd(lista) {
-  const SUBMIT_ELEM = $("#submit");
+export function termekHozzaad(lista) {
+  const SUBMIT_ELEM = $("#submitTablazat");
   SUBMIT_ELEM.on("click", function (evt) {
     evt.preventDefault();
 
@@ -169,6 +185,47 @@ export function termekHozzaAd(lista) {
     if ($(".valid-feedback").eq(0).css("display") === "block") {
       lista.push(adat);
       init(lista);
+    }
+  });
+}
+
+export function felhHozzaad(lista) {
+  const SUBMIT_ELEM = $("#submitAdat");
+  SUBMIT_ELEM.on("click", function (evt) {
+    evt.preventDefault();
+
+    const adat = {
+      vNev: $("#vNev").val(),
+      kNev: $("#kNev").val(),
+      email: $("#email").val(),
+      cim: $("#cim").val(),
+      cim2: $("#cim2").val(),
+      orszag: $("#orszag").val(),
+      megye: $("#megye").val(),
+      iranyito: $("#iranyito").val(),
+    };
+
+    if (
+      $(".valid-feedback").eq(0).css("display") === "block" &&
+      $(".valid-feedback").eq(1).css("display") === "block" &&
+      $(".valid-feedback").eq(2).css("display") === "block" &&
+      $(".valid-feedback").eq(3).css("display") === "block" &&
+      $(".valid-feedback").eq(4).css("display") === "block" &&
+      $(".valid-feedback").eq(5).css("display") === "block"
+    ) {
+      lista.push(adat);
+      adatokOldalAllpot();
+    }
+  });
+}
+
+function rendeles() {
+  const RENDELES_GOMB = $(".rendelesGomb");
+  RENDELES_GOMB.on("click", function () {
+    if (FELHASZNALO.length === 0) {
+      $("#sikertelenRendeles").modal("show");
+    } else {
+      $("#sikeresRendeles").modal("show");
     }
   });
 }

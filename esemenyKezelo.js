@@ -5,6 +5,7 @@ import {
   uresKosarOldal,
   arAtvalt,
   kosarArSzamit,
+  fizetendoMegjelenit,
 } from "./fuggvenyek.js";
 
 let jelenlegiOldal = 1;
@@ -41,13 +42,22 @@ export function oldalValtas() {
 export function kosarOldalAllapot() {
   if (KOSAR.length === 0) {
     megjelenit("#kosar-tarolo", uresKosarOldal());
+    megjelenit("#fizetendo-tarolo", "");
     oldalToggle(jelenlegiOldal);
   } else {
-    megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR, kosarAr));
     oldalToggle(jelenlegiOldal);
-    eltavolitKosarbol(KOSAR);
+    megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
+    megjelenit("#fizetendo-tarolo", fizetendoMegjelenit(kosarAr));
     darabSzamitas(KOSAR);
+    eltavolitKosarbol(KOSAR);
   }
+}
+
+function ujra() {
+  megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
+  megjelenit("#fizetendo-tarolo", fizetendoMegjelenit(kosarAr));
+  darabSzamitas(KOSAR);
+  eltavolitKosarbol(KOSAR);
 }
 
 function oldalToggle(jelenlegiOldal) {

@@ -101,7 +101,7 @@ export function uresKosarOldal() {
   return txt;
 }
 
-export function kosarTetelTxt(lista, ar) {
+export function kosarTetelTxt(lista) {
   let txt = ``;
   lista.forEach((e, i) => {
     txt += `
@@ -193,27 +193,32 @@ export function kosarTetelTxt(lista, ar) {
             </div>
           </div>
         </div>
-
-        <div class="fixed-bottom m-0 py-3 bg-white border-top">
-        <div class="container">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="">
-              <p class="fs-2 lead align-middle m-0">
-                Fizetendő: <span id="arHelye">${ar.toLocaleString("hu-HU", {
-                  style: "currency",
-                  currency: "HUF",
-                  minimumFractionDigits: 2,
-                })}</span>
-              </p>
-            </div>
-            <div class="border-start" style="padding-left: 2.5rem">
-              <button class="btn btn-success fs-4">Rendeld meg!</button>
-            </div>
-          </div>
-        </div>
-      </div>
     `;
   });
+  return txt;
+}
+
+export function fizetendoMegjelenit(ar) {
+  let txt = `
+  <div class="fixed-bottom m-0 py-3 bg-white border-top">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="">
+          <p class="fs-2 lead align-middle m-0">
+            Fizetendő: <span id="arHelye">${ar.toLocaleString("hu-HU", {
+              style: "currency",
+              currency: "HUF",
+              minimumFractionDigits: 2,
+            })}</span>
+          </p>
+        </div>
+        <div class="border-start" style="padding-left: 2.5rem">
+          <button class="btn btn-success fs-4">Rendeld meg!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
   return txt;
 }
 

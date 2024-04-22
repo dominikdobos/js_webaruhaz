@@ -1,17 +1,25 @@
-import { layoutLetrehoz, megjelenit, uresKosarOldal } from "./fuggvenyek.js";
+import { layoutLetrehoz, megjelenit, tablazatLetrehoz } from "./fuggvenyek.js";
 import {
   kosarbaEsemeny,
   oldalValtas,
-  eltavolitKosarbol,
+  rendezEsemeny,
+  szuresTipusra,
+  torolEsemeny,
 } from "./esemenyKezelo.js";
-import { KOSAR } from "./adatKezelo.js";
+import { termekHozzaAd } from "./adatKezelo.js";
 import { AUTOK } from "./adatok.js";
 
 init(AUTOK);
 oldalValtas();
+szuresTipusra(AUTOK);
+termekHozzaAd(AUTOK);
 
-function init(lista) {
+export function init(lista) {
   let txt = layoutLetrehoz(lista);
   megjelenit("#termek-tarolo", txt);
   kosarbaEsemeny(lista);
+  rendezEsemeny(lista);
+  txt = tablazatLetrehoz(lista);
+  megjelenit("#admin-tablazat", txt);
+  torolEsemeny(lista);
 }

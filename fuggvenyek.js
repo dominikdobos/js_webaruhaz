@@ -28,7 +28,9 @@ export function layoutLetrehoz(lista) {
                           <li class="list-group-item">
                             Teljesítmény - ${e.teljesitmeny}
                           </li>
-                          <li class="list-group-item">Hajtástípus - ${e.hajtastipus}</li>
+                          <li class="list-group-item">Hajtástípus - ${
+                            e.hajtastipus
+                          }</li>
                           <li class="list-group-item">
                             CO2-kibocsátás (kombinált) - ${e.co2}
                           </li>
@@ -70,7 +72,10 @@ export function layoutLetrehoz(lista) {
                         </div>
                     </div>
                     <div class="col-md-6 ms-auto d-flex align-items-center p-1">
-                      <h5 class="w-100 m-0 p-0 text-end">${e.arMegjelenit}</h5>
+                      <h5 class="w-100 m-0 p-0 text-end">${arAtvalt(
+                        e.ar,
+                        0
+                      )}</h5>
                     </div>
                   </div>
                 </div>
@@ -107,7 +112,7 @@ export function kosarTetelTxt(lista) {
     txt += `
     <div class="container border-bottom pb-4">
           <h3 class="display-5">
-            ${e.termek} <span class="display-6"> - ${e.arMegjelenit}</span>
+            ${e.termek} <span class="display-6"> - ${arAtvalt(e.ar, 0)}</span>
           </h3>
           <div class="row">
             <div class="col-lg-6 col-sm-12">
@@ -205,11 +210,7 @@ export function fizetendoMegjelenit(ar) {
       <div class="d-flex justify-content-between align-items-center">
         <div class="">
           <p class="fs-2 lead align-middle m-0">
-            Fizetendő: <span id="arHelye">${ar.toLocaleString("hu-HU", {
-              style: "currency",
-              currency: "HUF",
-              minimumFractionDigits: 2,
-            })}</span>
+            Fizetendő: <span id="arHelye">${arAtvalt(ar, 2)}</span>
           </p>
         </div>
         <div class="border-start" style="padding-left: 2.5rem">
@@ -219,6 +220,28 @@ export function fizetendoMegjelenit(ar) {
     </div>
   </div>
   `;
+  return txt;
+}
+
+export function tablazatLetrehoz(lista) {
+  let txt = "<div class='table-responsive'><table class='table table-striped'>";
+  txt +=
+    "<thead><tr><th>Típus</th><th>Ár</th><th>Teljesítmény</th><th>Hajtástípus</th><th>CO2</th><th>Sebességváltó</th><th>Gyorsulás</th><th>Üzemanyagtípus</th><th></th></tr></thead>";
+  txt += "<tbody>";
+  lista.forEach((elem, index) => {
+    txt += `<tr>
+            <td>${elem.termek}</td>
+            <td>${elem.ar}</td>
+            <td>${elem.teljesitmeny}</td>
+            <td>${elem.hajtastipus}</td>
+            <td>${elem.co2}</td>
+            <td>${elem.sebessegvalto}</td>
+            <td>${elem.gyorsulas}</td>
+            <td>${elem.uzemanyagtipus}</td>
+            <td><button id="${index}" class="torol">🗑️</button></td>
+            </tr>`;
+  });
+  txt += "</tbody></table></div>";
   return txt;
 }
 
@@ -235,10 +258,10 @@ export function kosarArSzamit(lista) {
   return ar;
 }
 
-export function arAtvalt(szam) {
+export function arAtvalt(szam, tizedes) {
   return szam.toLocaleString("hu-HU", {
     style: "currency",
     currency: "HUF",
-    minimumFractionDigits: 2,
+    minimumFractionDigits: tizedes,
   });
 }

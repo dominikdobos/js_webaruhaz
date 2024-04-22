@@ -69,16 +69,20 @@
       </div>
 
       <div class="termek-valtozo">
-        <div class="container-fluid row p-3 border-bottom mx-0 bg-white">
-          <div class="col-lg-3 py-2">
-            <select class="form-select">
+        <div
+          class="container-fluid d-flex gap-4 p-3 border-bottom mx-0 bg-white"
+        >
+          <div class="py-2">
+            <select class="form-select rendezesSzempontok">
               <option>Rendezési szempontok</option>
-              <option>Ár szerint növekvő</option>
-              <option>Ár szerint csökkenő</option>
+              <option value="novekvo">Ár szerint növekvő</option>
+              <option value="csokkeno">Ár szerint csökkenő</option>
             </select>
           </div>
-          <div class="col-lg-3 py-2">
+
+          <div class="py-2">
             <input
+              id="szuro"
               type="text"
               class="form-control"
               placeholder="Szűrési lehetőségek"
@@ -107,7 +111,148 @@
 
       <div class="adatok-valtozo elrejt"></div>
 
-      <div class="admin-valtozo elrejt"></div>
+      <div class="admin-valtozo elrejt">
+        <div class="container-fluid py-3 px-5 mb-3 bg-white border-bottom">
+          <div class="row m-0 d-flex align-items-center">
+            <h2 class="col-6 col-md-4 display-3 px-5">Admin</h2>
+          </div>
+        </div>
+        <div
+          class="container bg-white border py-3 mx-3 mx-auto"
+          style="width: 40%"
+        >
+          <h2 class="display-6 border-bottom mb-3 px-2">Adatok</h2>
+
+          <form>
+            <div class="container">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Típus</span
+                >
+                <input
+                  id="tipus"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  placeholder="BMW M3 CS"
+                  pattern=".{5,}|^$"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Ár</span
+                >
+                <input
+                  id="ar"
+                  type="number"
+                  min="0"
+                  max="100000000"
+                  value="10000000"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                />
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Ft</span
+                >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Teljesítmény</span
+                >
+                <input
+                  id="teljesitmeny"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  placeholder="100 kW (120 LE)"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Hajtástípus</span
+                >
+                <input
+                  id="hajtastipus"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  placeholder="xDrive"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >CO2</span
+                >
+                <input
+                  id="co2"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  placeholder="100 g/km"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="sebessegvalto"
+                  >Sebességváltó</label
+                >
+                <select class="form-select" id="sebessegvalto">
+                  <option value="Automata">Automata</option>
+                  <option value="Manuális">Manuális</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Gyorsulás</span
+                >
+                <input
+                  id="gyorsulas"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  placeholder="1,0s (0-100 km/h)"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="uzemanyag"
+                  >Üzemanyagtípus</label
+                >
+                <select class="form-select" id="uzemanyag">
+                  <option value="Dízel">Dízel</option>
+                  <option value="Benzin">Benzin</option>
+                  <option value="Hibrid benzin">Hibrid benzin</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Kép</span
+                >
+                <input
+                  id="kep"
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"
+                  value="./kepek/M3.jpg"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div class="container">
+              <button type="submit" id="submit" class="btn btn-secondary">
+                Hozzáadás
+              </button>
+            </div>
+          </form>
+        </div>
+        <div id="admin-tablazat" class="bg-light container-fluid py-3"></div>
+      </div>
 
       <footer class="footer mt-auto pb-5 pt-5 bg-body-tertiary">
         <div class="container">

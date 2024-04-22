@@ -1,4 +1,13 @@
-import { kosarbaRakas, KOSAR, termekTorles, kosarAr } from "./adatKezelo.js";
+import {
+  kosarbaRakas,
+  KOSAR,
+  termekTorlesKosarbol,
+  kosarAr,
+  novekvoRendez,
+  csokkenoRendez,
+  szures,
+  termekTorles,
+} from "./adatKezelo.js";
 import {
   kosarTetelTxt,
   megjelenit,
@@ -7,6 +16,7 @@ import {
   kosarArSzamit,
   fizetendoMegjelenit,
 } from "./fuggvenyek.js";
+import { init } from "./main.js";
 
 let jelenlegiOldal = 1;
 
@@ -33,9 +43,11 @@ export function oldalValtas() {
   });
   ADATOK_OLDAL.on("click", function () {
     jelenlegiOldal = 3;
+    oldalToggle(jelenlegiOldal);
   });
   ADMIN_OLDAL.on("click", function () {
     jelenlegiOldal = 4;
+    oldalToggle(jelenlegiOldal);
   });
 }
 
@@ -51,13 +63,6 @@ export function kosarOldalAllapot() {
     darabSzamitas(KOSAR);
     eltavolitKosarbol(KOSAR);
   }
-}
-
-function ujra() {
-  megjelenit("#kosar-tarolo", kosarTetelTxt(KOSAR));
-  megjelenit("#fizetendo-tarolo", fizetendoMegjelenit(kosarAr));
-  darabSzamitas(KOSAR);
-  eltavolitKosarbol(KOSAR);
 }
 
 function oldalToggle(jelenlegiOldal) {
@@ -92,7 +97,7 @@ function oldalToggle(jelenlegiOldal) {
 export function eltavolitKosarbol(lista) {
   const TOROL_GOMB = $(".termekTorolGomb");
   TOROL_GOMB.on("click", function (e) {
-    termekTorles(lista, e.target.id);
+    termekTorlesKosarbol(lista, e.target.id);
     kosarOldalAllapot();
   });
 }
@@ -105,5 +110,37 @@ function darabSzamitas(lista) {
       let ujAr = kosarArSzamit(lista);
       megjelenit("#arHelye", arAtvalt(ujAr));
     }
+  });
+}
+
+export function rendezEsemeny(lista) {
+  const RENDEZ_ELEM = $(".rendezesSzempontok");
+
+  RENDEZ_ELEM.on("change", function () {
+    if (RENDEZ_ELEM.val() === "novekvo") {
+      const UJ_LISTA = novekvoRendez(lista);
+      init(UJ_LISTA);
+    }
+    if (RENDEZ_ELEM.val() === "csokkeno") {
+      const UJ_LISTA = csokkenoRendez(lista);
+      init(UJ_LISTA);
+    }
+  });
+}
+
+export function szuresTipusra(lista) {
+  const SZURO_ELEM = $("#szuro");
+  SZURO_ELEM.on("keyup", function () {
+    let szoveg = SZURO_ELEM.val();
+    init(szures(lista, szoveg));
+  });
+}
+
+export function torolEsemeny(lista) {
+  const TOROL_ELEM = $(".torol");
+  TOROL_ELEM.on("click", function (evt) {
+    let index = evt.target.id;
+    const UJ_LISTA = termekTorles(lista, index);
+    init(UJ_LISTA);
   });
 }

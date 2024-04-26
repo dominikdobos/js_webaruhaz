@@ -88,26 +88,41 @@ function oldalToggle(jelenlegiOldal) {
   const ADMIN_MEGJELENITO = $(".admin-valtozo");
 
   if (jelenlegiOldal === 1) {
-    TERMEK_MEGJELENITO.removeClass("elrejt");
-    KOSAR_MEGJELENITO.addClass("elrejt");
-    ADAT_MEGJELENITO.addClass("elrejt");
-    ADMIN_MEGJELENITO.addClass("elrejt");
+    jelenlegiToggle(
+      KOSAR_MEGJELENITO,
+      ADAT_MEGJELENITO,
+      ADMIN_MEGJELENITO,
+      TERMEK_MEGJELENITO
+    );
   } else if (jelenlegiOldal === 2) {
-    TERMEK_MEGJELENITO.addClass("elrejt");
-    KOSAR_MEGJELENITO.removeClass("elrejt");
-    ADAT_MEGJELENITO.addClass("elrejt");
-    ADMIN_MEGJELENITO.addClass("elrejt");
+    jelenlegiToggle(
+      ADAT_MEGJELENITO,
+      ADMIN_MEGJELENITO,
+      TERMEK_MEGJELENITO,
+      KOSAR_MEGJELENITO
+    );
   } else if (jelenlegiOldal === 3) {
-    TERMEK_MEGJELENITO.addClass("elrejt");
-    KOSAR_MEGJELENITO.addClass("elrejt");
-    ADAT_MEGJELENITO.removeClass("elrejt");
-    ADMIN_MEGJELENITO.addClass("elrejt");
+    jelenlegiToggle(
+      TERMEK_MEGJELENITO,
+      KOSAR_MEGJELENITO,
+      ADMIN_MEGJELENITO,
+      ADAT_MEGJELENITO
+    );
   } else {
-    TERMEK_MEGJELENITO.addClass("elrejt");
-    KOSAR_MEGJELENITO.addClass("elrejt");
-    ADAT_MEGJELENITO.addClass("elrejt");
-    ADMIN_MEGJELENITO.removeClass("elrejt");
+    jelenlegiToggle(
+      TERMEK_MEGJELENITO,
+      KOSAR_MEGJELENITO,
+      ADAT_MEGJELENITO,
+      ADMIN_MEGJELENITO
+    );
   }
+}
+
+function jelenlegiToggle(e1, e2, e3, e4) {
+  e1.addClass("elrejt");
+  e2.addClass("elrejt");
+  e3.addClass("elrejt");
+  e4.removeClass("elrejt");
 }
 
 export function eltavolitKosarbol(lista) {

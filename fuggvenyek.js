@@ -254,18 +254,8 @@ export function fizetendoMegjelenit(ar) {
           </p>
         </div>
         <!-- Rendel gomb -->
-
-        
-
         <div class="border-start" style="padding-left: 2.5rem">
-
-        
-
-
           <button class="btn btn-success fs-4 rendelesGomb" data-bs-toggle="modal" data-bs-target="#exampleModal">Rendeld meg!</button>
-          
-          
-
         </div>
       </div>
     </div>

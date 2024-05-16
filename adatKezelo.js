@@ -40,7 +40,12 @@ export function csokkenoRendez(lista) {
 
 export function szures(lista, keresoSzoveg) {
   const szurtLista = lista.filter(function (auto) {
-    return auto.termek.toUpperCase().includes(keresoSzoveg.toUpperCase());
+    return (
+      auto.termek.toUpperCase().includes(keresoSzoveg.toUpperCase()) ||
+      auto.hajtastipus.toUpperCase().includes(keresoSzoveg.toUpperCase()) ||
+      auto.sebessegvalto.toUpperCase().includes(keresoSzoveg.toUpperCase()) ||
+      auto.uzemanyagtipus.toUpperCase().includes(keresoSzoveg.toUpperCase())
+    );
   });
   return szurtLista;
 }
